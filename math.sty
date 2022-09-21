@@ -1,0 +1,25 @@
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{fixmath}
+
+\newcommand{\expect}{\mathrm{E}}
+\newcommand{\variance}{\mathrm{Var}}
+\newcommand{\sd}{\mathrm{SD}}
+\newcommand{\prob}{\mathrm{P}}
+\newcommand{\mat}[1]{\mathbold{#1}}
+\renewcommand{\vec}[1]{\mathbold{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\numberset}[1]{\mathbb{#1}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\defeq}{\vcentcolon=}
+% define \infdiv for KL divergence
+\DeclarePairedDelimiterX{\infdivx}[2]{(}{)}{%
+	#1\,\delimsize\|\,#2%
+}
+\newcommand{\divergence}{D\infdivx}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand\iid{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily i.i.d.}}}{\sim}}}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
