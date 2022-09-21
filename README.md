@@ -72,7 +72,7 @@ $$
 
 a. Show that $g_X(x)$ is a probability density function.  
    That is, show that i. $g(x) \ge 0$ for all $x \in \set{X}$ and ii. 
-   $\int_\set{X} g(x) \, dx = 1$. 
+   $\int_{\set{X}} g(x) \, dx = 1$. 
 
 b. Show that $g_X(x)$ is in the exponential family of distributions:
 $$
