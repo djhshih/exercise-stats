@@ -1,0 +1,127 @@
+---
+title: "Statistical Derivation Exercises"
+output:
+  pdf_document:
+    includes:
+      in_header: math.sty
+---
+
+A good reference for mathematical statistics is
+
+Casella, George, and Roger L. Berger. *Statistical inference*. Cengage Learning, 2021.
+
+
+## 1. Model identifiability
+
+Given data $y_{ij}$ for $i \in \{1 \dots N \}$ and $j \in \{1 \dots J \}$, 
+we wish to estimate parameters $\theta_i$ and $\phi_j$ under the model 
+$$
+y_{ij} = \theta_i + \phi_j + \epsilon_{ij} ,
+$$
+where
+$$
+\begin{aligned}
+\expect[\epsilon_{ij}] &= 0 \\
+\variance[\epsilon_{ij}] &= \sigma^2 .
+\end{aligned}
+$$
+
+a. Show that this model is **non-identifiable**.  
+   That is, given the data points $(y_{ij})$, the model cannot distinguish 
+   between $(\theta_i, \phi_j)$ and $(\theta_i^\prime, \phi_j^\prime)$ 
+   for $\theta_i^\prime \neq \theta_i$ and $\phi_j^\prime \neq \phi_j$ 
+   because these two distinct sets of parameters explain the data equally 
+   well under the model.
+
+b. Introduce a constraint on $\phi_j$ so that the model becomes identifiable.
+
+
+## 2. Optimization
+
+Non-negative matrix factorization seeks to factorize 
+a $N \times J$ non-negative matrix $\mat{X}$ as
+$$
+\mat{X} \approx \mat{W} \mat{H} ,
+$$
+where $x_{ij} \ge 0$ for $i = 1 \dots N$ and $j = 1 \dots J$.
+Similarly, $w_{ik} \ge 0$ and $h_{kj} \ge 0$ for $k = 1 \dots K$.
+
+One common objective function that is maximized by non-negative matrix 
+factorization is
+$$
+J(\mat{\Lambda}) = \sum_i \sum_j x_{ij} \log\left( \lambda_{ij} \right) - \lambda_{ij},
+$$
+where $\mat{\Lambda} = \mat{W} \mat{H}$.
+
+Show that maximizing this function with respect to $\mat{\Lambda}$ 
+is equivalent to minimizing $\divergence{ \mat{X} }{ \mat{\Lambda} }$,
+where $D$ is the generalized Kullback-Leibler divergence:
+$$
+\divergence{ \mat{A} }{ \mat{B} } =
+  \sum_i \sum_j a_{ij} \log\left( \frac{a_{ij}}{b_{ij}} \right) - 
+  a_{ij} + b_{ij} .
+$$
+
+## 3. Exponential family
+
+We define the following distribution:
+$$
+g_X(x; \mu, \sigma^2) = 
+  \frac{1}{\mu^2 + \sigma^2} \, x^2 \, \text{Normal}\left(x; \mu, \sigma^2 \right) .
+$$
+
+a. Show that $g_X(x)$ is a probability density function.  
+   That is, show that i. $g(x) \ge 0$ for all $x \in \set{X}$ and ii. 
+   $\int_{\set{X}} g(x) \, dx = 1$. 
+
+b. Show that $g_X(x)$ is in the exponential family of distributions:
+$$
+f_X(x; \theta) = 
+  h(x) \exp\left\{ \vec{\eta}(\theta)^\top \vec{t}(x) - A(\theta) \right\} ,
+$$
+for $\theta = (\mu, \sigma^2)$.
+Additionally, $\vec{\eta}(\theta)$ and $\vec{t}(x)$ are column vectors.  
+In other words, rearrange $g_X(x)$ to find $h(x)$, $\vec{\eta}(\theta)$, 
+$\vec{t}(x)$, and $A(\theta)$.
+
+
+## 4. Estimator bias and consistency
+
+Given data points $(x_i, s_i)$ for $i \in \{ 1 \dots N \}$, 
+where $x_i \in \set{R}$ and $s_i \in \{ 1 \dots T \}$,
+as well as an indicator variable $z_t \in \{0, 1\}$ for $t \in \{ 1 \dots T \}$,
+we have the following model:
+$$
+x_i \sim 
+\begin{cases}
+  \text{Normal}\left( \mu_{s_i}, \sigma^2 \right)   & z_{s_i} = 0 \\
+  \text{Uniform}\left( 0, \infty \right)            & z_{s_i} = 1 \\
+\end{cases}
+$$
+  
+We define the following estimators:
+$$
+\begin{aligned}
+\hat{\mu_t} &= \frac{ \sum_i x_i I(s_i = t) }{ \sum_i I(s_i = t) } , \\
+\hat{\sigma^2} &= \frac{ (x_i - \hat{\mu}_{s_i})^2 I(z_{s_i} = 0)}
+  {\sum_i I(z_{s_i} = 0)} .
+\end{aligned}
+$$
+
+a. Show that $\hat{\mu_t}$ is an **unbiased** estimator for $z_t = 0$.  
+   That is, show that $\expect[\hat{\mu_t}] = \mu_t$.
+
+b. Show that $\hat{\mu_t}$ is an **consistent** estimator for $z_t = 0$.  
+   Recall that, given a sample $X_1 \ldots X_n$,
+   if $\hat{\theta}_n = \hat{\theta}_n(X_1 \ldots X_n)$ is a sequence of 
+   estimators of a parameter $\theta$ satisfying the following conditions
+   for every $\theta \in \Theta$:
+   
+     i. $\lim_{n \rightarrow \infty}  \variance[ \hat{\theta}_n ] = 0$,
+   
+     ii. $\lim_{n \rightarrow \infty} \expect[ \hat{\theta}_n ] - \theta = 0$,  
+   
+   then $\hat{\theta}_n$ is a consistent sequence of estimators.
+
+c. Find $\expect[\hat{\sigma^2}]$.
+
