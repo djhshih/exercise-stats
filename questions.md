@@ -18,16 +18,10 @@ we wish to estimate parameters $\theta_i$ and $\phi_j$ under the model
 $$
 y_{ij} = \theta_i + \phi_j + \epsilon_{ij} ,
 $$
-where
-$$
-\begin{aligned}
-\expect[\epsilon_{ij}] &= 0 \\
-\variance[\epsilon_{ij}] &= \sigma^2 .
-\end{aligned}
-$$
+where $\expect[\epsilon_{ij}] = 0$ and $\variance[\epsilon_{ij}] = \sigma^2$.
 
 a. Show that this model is **non-identifiable**.  
-   That is, given the data points $(y_{ij})$, the model cannot distinguish 
+   That is, given data points $(y_{ij})$, the model cannot distinguish 
    between $(\theta_i, \phi_j)$ and $(\theta_i^\prime, \phi_j^\prime)$ 
    for $\theta_i^\prime \neq \theta_i$ and $\phi_j^\prime \neq \phi_j$ 
    because these two distinct sets of parameters explain the data equally 
@@ -89,7 +83,7 @@ $\vec{t}(x)$, and $A(\theta)$.
 
 Given data points $(x_i, s_i)$ for $i \in \{ 1 \dots N \}$, 
 where $x_i \in \set{R}$ and $s_i \in \{ 1 \dots T \}$,
-as well as an indicator variable $z_t \in \{0, 1\}$ for $t \in \{ 1 \dots T \}$,
+as well as an indicator $z_t \in \{0, 1\}$ for $t \in \{ 1 \dots T \}$,
 we have the following model:
 $$
 x_i \sim 
@@ -103,10 +97,11 @@ We define the following estimators:
 $$
 \begin{aligned}
 \hat{\mu_t} &= \frac{ \sum_i x_i I(s_i = t) }{ \sum_i I(s_i = t) } , \\
-\hat{\sigma^2} &= \frac{ (x_i - \hat{\mu}_{s_i})^2 I(z_{s_i} = 0)}
-  {\sum_i I(z_{s_i} = 0)} .
+\hat{\sigma^2} &= \frac{ \sum_i (x_i - \hat{\mu}_{s_i})^2 I(z_{s_i} = 0)}
+  {\sum_i I(z_{s_i} = 0)} ,
 \end{aligned}
 $$
+where $I(\cdot)$ is the indicator function.
 
 a. Show that $\hat{\mu_t}$ is an **unbiased** estimator for $z_t = 0$.  
    That is, show that $\expect[\hat{\mu_t}] = \mu_t$.
