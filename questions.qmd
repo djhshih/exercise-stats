@@ -1,5 +1,6 @@
 ---
 title: "Statistical Derivation Exercises"
+pdf-engine: pdflatex
 format:
   pdf:
     include-in-header: math.sty
@@ -57,6 +58,13 @@ $$
 
 ## 3. Exponential family
 
+Recall that the exponential family of distributions has the form:
+$$
+f_X(x; \theta) = 
+  h(x) \exp\left\{ \vec{\eta}(\theta)^\top \vec{t}(x) - A(\theta) \right\} ,
+$$
+where $\vec{\eta}(\theta)$ and $\vec{t}(x)$ are column vectors.  
+
 We define the following distribution:
 $$
 g_X(x; \mu, \sigma^2) = 
@@ -67,15 +75,10 @@ a. Show that $g_X(x)$ is a probability density function.
    That is, show that i. $g(x) \ge 0$ for all $x \in \set{X}$ and ii. 
    $\int_{\set{X}} g(x) \, dx = 1$. 
 
-b. Show that $g_X(x)$ is in the exponential family of distributions:
-$$
-f_X(x; \theta) = 
-  h(x) \exp\left\{ \vec{\eta}(\theta)^\top \vec{t}(x) - A(\theta) \right\} ,
-$$
-for $\theta = (\mu, \sigma^2)$.
-Additionally, $\vec{\eta}(\theta)$ and $\vec{t}(x)$ are column vectors.  
-In other words, rearrange $g_X(x)$ to find $h(x)$, $\vec{\eta}(\theta)$, 
-$\vec{t}(x)$, and $A(\theta)$.
+b. Show that $g_X(x)$ is in the exponential family for 
+   $\theta = (\mu, \sigma^2)$.
+   In other words, rearrange $g_X(x)$ to find $h(x)$, $\vec{\eta}(\theta)$, 
+   $\vec{t}(x)$, and $A(\theta)$.
 
 
 ## 4. Estimator bias and consistency
