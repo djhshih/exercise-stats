@@ -1,9 +1,8 @@
 ---
 title: "Statistical Derivation Exercises"
-output:
-  pdf_document:
-    includes:
-      in_header: math.sty
+format:
+  pdf:
+    include-in-header: math.sty
 ---
 
 A good reference for mathematical statistics is
