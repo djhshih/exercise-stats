@@ -48,7 +48,8 @@ $$
 where $\mat{\Lambda} = \mat{W} \mat{H}$.
 
 Show that maximizing this function with respect to $\mat{\Lambda}$ 
-is equivalent to minimizing $\divergence{ \mat{X} }{ \mat{\Lambda} }$,
+is equivalent to minimizing $\divergence{ \mat{X} }{ \mat{\Lambda} }$
+with respect to $\mat{\Lambda}$,
 where $D$ is the generalized Kullback-Leibler divergence:
 $$
 \divergence{ \mat{A} }{ \mat{B} } =
